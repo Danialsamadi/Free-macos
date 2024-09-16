@@ -8,6 +8,7 @@ from .core import get_vm_stat
 from .progress import create_progress_table
 from .ignore_input import ignore_keyboard_input
 
+
 console = Console()
 
 
