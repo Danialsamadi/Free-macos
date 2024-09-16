@@ -4,6 +4,9 @@ Have you ever wanted to use the `free` command on macOS? Now you can! The Free m
 
 But wait, this isn’t just about commands. It’s a live activity monitor for your memory status, implemented with colorful progress bars to give you a clear view of your system’s memory usage.
 
+![Free-macos](https://github.com/user-attachments/assets/7a99d7b1-2330-4555-a723-3be0a98a590d)
+
+
 ## Features
 
 - **Live Memory Monitoring:** Visualize memory usage with progress bars.
