@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "free-macos"
+version = "0.1.0"
+description = ""
+authors = ["Danial Samadi <danisamadi11@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = "^8.1.7"
+rich = "^13.8.1"
+
+
+[tool.poetry.scripts]
+free = "free_macos.cli:show_vm_stat"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
