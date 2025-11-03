@@ -1,79 +1,166 @@
-# Free-macos
 
-Have you ever wanted to use the `free` command on macOS? Now you can! The Free macOS project gives you the ability to monitor your system’s memory status with real-time updates and visual progress bars.
+# Free-macOS
 
-But wait, this isn’t just about commands. It’s a live activity monitor for your memory status, implemented with colorful progress bars to give you a clear view of your system’s memory usage.
+> Bring the power of Linux's `free` command to macOS with real-time visual memory monitoring
 
-![Free-macos](https://github.com/user-attachments/assets/7a99d7b1-2330-4555-a723-3be0a98a590d)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776ab.svg)](https://www.python.org/)
+[![Poetry](https://img.shields.io/badge/Poetry-dependency%20management-60a5fa.svg)](https://python-poetry.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![macOS](https://img.shields.io/badge/macOS-compatible-000000.svg)](https://www.apple.com/macos/)
 
+Ever missed the `free` command on macOS? **Free-macOS** brings it back—and makes it better. Monitor your system's memory in real-time with colorful progress bars and live statistics, right in your terminal.
 
-## Features
+![Free-macos Demo](https://github.com/user-attachments/assets/7a99d7b1-2330-4555-a723-3be0a98a590d)
 
-- **Live Memory Monitoring:** Visualize memory usage with progress bars.
-- **Real-time Updates:** Get up-to-date information about your system’s memory status.
-- **Customizable Refresh Interval:** Adjust the interval time between updates using the `--interval` option.
-- **Formatted Output:** Memory values are displayed in B, KB, MB, or GB.
-- **Easy Setup:** Quickly set up and run the monitoring tool.
+## ✨ Why Free-macOS?
 
-## Installation
+macOS doesn't include the beloved `free` command that Linux users rely on. Free-macOS fills that gap and enhances it with:
 
-1. **Clone the Repository**
+- 📊 **Visual Progress Bars** - See memory usage at a glance with colorful indicators
+- ⚡ **Real-Time Updates** - Live monitoring with customizable refresh intervals
+- 🎨 **Beautiful Output** - Clean, formatted display with automatic unit conversion (B/KB/MB/GB)
+- 🔧 **Zero Configuration** - Works out of the box with sensible defaults
+- 🚀 **Lightweight** - Minimal resource footprint
 
-   First, clone the repository to your local machine:
+## 🎯 Features
 
-   ```sh
-   git clone https://github.com/Danialsamadi/Free-macos.git
+| Feature | Description |
+|---------|-------------|
+| **Live Monitoring** | Continuous memory status updates in your terminal |
+| **Progress Bars** | Visual representation of memory usage (Used, Free, Active, Wired, Compressed) |
+| **Custom Intervals** | Adjust refresh rate with `--interval` flag |
+| **Smart Formatting** | Automatic unit conversion for readability |
+| **Easy Integration** | Set up as a system-wide command with simple aliasing |
 
-2. **Navigate to the Project Directory**
+## 📦 Installation
 
-   ```sh
-   cd Free-macos
-   ```
+### Prerequisites
+- macOS (10.14+)
+- Python 3.8 or higher
+- Poetry (for dependency management)
 
-3. **Install Dependencies**
+### Quick Setup
 
-   Use Poetry to install the project dependencies:
+```bash
+# 1. Clone the repository
+git clone https://github.com/Danialsamadi/Free-macos.git
+cd Free-macos
 
-   ```sh
-   poetry install
-   ```
-   
-## Usage
+# 2. Install dependencies with Poetry
+poetry install
 
-### Running with Poetry
-
-To run the Free macOS project using Poetry, navigate to the project directory and use the following command:
-
-```sh
+# 3. Run the tool
 poetry run free --interval 2
 ```
 
-This example sets the refresh interval to 2 seconds. Adjust the interval as needed to suit your preferences.
+That's it! You're now monitoring your system's memory.
 
-### Set Up an Alias
+## 🚀 Usage
 
-To simplify running the project, you can set up an alias in your shell configuration.
+### Basic Usage
 
-Add the following alias to your `.zshrc` or `.bashrc` file, replacing `/path/to/your/project` with the actual path to your project directory:
-
-```sh
-alias free="cd /path/to/your/project && poetry run free"
+Run with default settings (1-second refresh):
+```bash
+poetry run free
 ```
 
-After adding the alias, reload your shell configuration:
+### Custom Refresh Interval
 
-```sh
+Set your preferred update frequency (in seconds):
+```bash
+poetry run free --interval 2    # Updates every 2 seconds
+poetry run free --interval 0.5  # Updates every 500ms (fast)
+poetry run free --interval 5    # Updates every 5 seconds (slow)
+```
+
+### Global Command Setup
+
+Make `free` available system-wide by adding an alias to your shell configuration:
+
+**For Zsh (default on modern macOS):**
+```bash
+# Add to ~/.zshrc
+echo 'alias free="cd /path/to/Free-macos && poetry run free"' >> ~/.zshrc
 source ~/.zshrc
-# or
+```
+
+**For Bash:**
+```bash
+# Add to ~/.bashrc or ~/.bash_profile
+echo 'alias free="cd /path/to/Free-macos && poetry run free"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Now you can use the `free` command from anywhere in your terminal to monitor your memory status.
+> 💡 **Pro Tip:** Replace `/path/to/Free-macos` with your actual project path. Use `pwd` in the project directory to get the full path.
 
-## Contributing
+Now run `free` from anywhere in your terminal! 🎉
 
-If you want to contribute to the project, feel free to submit a pull request or open an issue. We welcome contributions and feedback!
+## 📊 Understanding the Output
 
-## License
+Free-macOS displays the following memory metrics:
+
+- **Total** - Total physical RAM installed
+- **Used** - Memory currently in use by applications
+- **Free** - Completely unused memory
+- **Active** - Recently used memory that's still in RAM
+- **Wired** - Memory required by the system (cannot be compressed or paged out)
+- **Compressed** - Memory that's been compressed to save space
+
+Progress bars show the percentage of each metric relative to total memory.
+
+## 🛠️ Development
+
+### Project Structure
+```
+Free-macos/
+├── free_macos/          # Main source code
+│   ├── __init__.py
+│   └── main.py          # Core monitoring logic
+├── pyproject.toml       # Poetry configuration
+├── poetry.lock          # Locked dependencies
+└── README.md
+```
+
+### Adding Features
+
+Want to enhance Free-macOS? Here are some ideas:
+- Export metrics to CSV/JSON
+- Add alerts for high memory usage
+- Historical memory graphs
+- Swap memory monitoring
+- Process-level memory breakdown
+
+## 🤝 Contributing
+
+Contributions are welcome! Whether it's bug fixes, new features, or documentation improvements:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 🐛 Issues
+
+Found a bug or have a feature request? [Open an issue](https://github.com/Danialsamadi/Free-macos/issues) on GitHub.
+
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by the classic Linux `free` command
+- Built for macOS users who miss their Linux tools
+- Thanks to the Python and Poetry communities
+
+## 📧 Contact
+
+**Danial Samadi** - [@Danialsamadi](https://github.com/Danialsamadi)
+
+Project Link: [https://github.com/Danialsamadi/Free-macos](https://github.com/Danialsamadi/Free-macos)
+
+---
+
+⭐ If Free-macOS makes your life easier, give it a star!
+
